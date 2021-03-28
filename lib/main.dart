@@ -224,7 +224,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            'TARIFA CPU',
+            'TARIFA CUP',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
