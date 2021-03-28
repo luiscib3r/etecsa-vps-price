@@ -50,6 +50,10 @@ class _HomePageState extends State<HomePage> {
                 SizedBox(
                   height: 10,
                 ),
+                outputWidget10,
+                SizedBox(
+                  height: 10,
+                ),
                 dataTable,
               ],
             ),
@@ -221,7 +225,7 @@ class _HomePageState extends State<HomePage> {
       );
 
   Widget get outputWidget => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             'TARIFA CUP',
@@ -232,6 +236,48 @@ class _HomePageState extends State<HomePage> {
           hourPriceOutput,
           dayPriceOutput,
           monthPriceOutput,
+        ],
+      );
+
+  Widget get hourPriceOutput10 => Row(
+        children: [
+          Text(
+            'Hora: \$ ${(hourPrice - hourPrice * 0.10).toStringAsFixed(2)}',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        ],
+      );
+
+  Widget get dayPriceOutput10 => Row(
+        children: [
+          Text(
+            'Diaria: \$ ${(dayPrice - dayPrice * 0.10).toStringAsFixed(2)}',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        ],
+      );
+
+  Widget get monthPriceOutput10 => Row(
+        children: [
+          Text(
+            'Mensual: \$ ${(monthPrice - monthPrice * 0.10).toStringAsFixed(2)}',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          )
+        ],
+      );
+
+  Widget get outputWidget10 => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'TRANSFERMÓVIL',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          hourPriceOutput10,
+          dayPriceOutput10,
+          monthPriceOutput10,
         ],
       );
 
