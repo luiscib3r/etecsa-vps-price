@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
                 cpuInput,
                 ramInput,
                 hddInput,
+                backupCheckBox,
                 SizedBox(
                   height: 10,
                 ),
@@ -182,7 +183,11 @@ class _HomePageState extends State<HomePage> {
         ),
       );
 
-  double get hourPrice => cpu * 0.04 + ram * 0.05 + hdd * 0.01;
+  double get hourPrice =>
+      cpu * 0.04 +
+      ram * 0.05 +
+      hdd * 0.01 +
+      (useBackup ? (hdd * 0.01) * 0.75 : 0);
 
   double get dayPrice => hourPrice * 24;
 
@@ -219,7 +224,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            'TARIFA',
+            'TARIFA CPU',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -228,5 +233,17 @@ class _HomePageState extends State<HomePage> {
           dayPriceOutput,
           monthPriceOutput,
         ],
+      );
+
+  bool _useBackup = true;
+  set useBackup(value) => setState(() => _useBackup = value);
+  bool get useBackup => _useBackup;
+
+  Widget get backupCheckBox => CheckboxListTile(
+        title: Text("Usar VPS Backup (Costo 75% de HDD)"),
+        value: useBackup,
+        onChanged: (value) => useBackup = value,
+        controlAffinity:
+            ListTileControlAffinity.leading, //  <-- leading Checkbox
       );
 }
